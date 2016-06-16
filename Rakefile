@@ -18,9 +18,9 @@ task :save_price_list, :offer_index_file_location do |t, args|
   raise "Database configuration not specified as DATABASE_URL environment variable" unless db_url
 
   offer_index_files = Dir[File.join(args.offer_index_file_location, "*_offer-index.json")]
-  p "Processing #{offer_index_files}"
 
   offer_index_files.each do |file_location|
+    p "Processing #{file_location}"
     SaveAWSPriceList.new(db_url).save(file_location)
   end
 end
